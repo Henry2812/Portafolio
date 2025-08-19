@@ -177,7 +177,7 @@ export default function Home() {
 
           {/* Botón de menú móvil */}
           <button 
-            className="md:hidden p-2 -mr-2 text-slate-400 hover:text-indigo-400 focus:outline-none"
+            className="md:hidden p-2 -mr-2 text-slate-400 hover:text-indigo-400 focus:outline-none z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Menú"
           >
