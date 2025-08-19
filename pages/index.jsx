@@ -8,15 +8,15 @@ const projects = [
     link: '#',
     tech: ['Android Studio', 'Java', 'Flask', 'PythonAnywhere', 'Postman'],
     image: '/images/projects/iñap/iñap.png',
-    github: 'https://github.com/Henry2812/sistema-inventario'
+    github: 'https://github.com/Henry2812'
   },
   {
     title: 'Sistema Web E-commerce',
     desc: 'Aplicación web para el comercio electrónico con panel analítico para la toma de decisiones, dashboards con métricas y KPI.',
-    link: '#',
+    link: 'https://healthinformaticsjournal.com/index.php/IJMI/article/view/1310/1216',
     tech: ['PHP', 'Loocker Studio', 'phpMyAdmin', 'Bootstrap', 'Paypal', 'Hostinger'],
     image: '/images/projects/web/webE.jpg',
-    github: 'https://github.com/Henry2812/gestor-tareas'
+    github: 'https://healthinformaticsjournal.com/index.php/IJMI/article/view/1310/1216'
   },
   {
     title: 'Aplicación Movil de Inglés',
@@ -24,7 +24,7 @@ const projects = [
     link: 'https://david-arreaga.vercel.app',
     tech: ['Flutter', 'Dart', 'Cloud Firestore', 'Firebase Authentication'],
     image: '/images/projects/english/english.png',
-    github: 'https://github.com/Henry2812/portafolio'
+    github: 'https://github.com/Henry2812'
   }
 ];
 
@@ -67,7 +67,7 @@ export default function Home() {
             <span className="text-indigo-400 mr-2 flex-shrink-0">▹</span>
             <span>Producto de este trabajo en conjunto se desarrolló un artículo científico publicado en la revista{' '}
               <a 
-                href="https://healthinformaticsjournal.com/index.php/IJMI/article/view/1310/1216" 
+                href="https://healthinformaticsjournal.com/index.php/IJMI/article/view/1310" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-indigo-400 hover:text-indigo-300 font-medium underline underline-offset-4 decoration-dotted hover:decoration-solid transition-colors duration-200 inline-flex items-center"
@@ -120,14 +120,16 @@ export default function Home() {
     cursorY.set(clientY);
   }, [cursorX, cursorY]);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <main
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen text-slate-100 antialiased overflow-hidden"
+      className="relative min-h-screen text-slate-100 antialiased overflow-x-hidden"
     >
       {/* Fondo interactivo */}
       <div
-        className="fixed inset-0 -z-10"
+        className="fixed inset-0 -z-10 w-screen h-screen"
         style={{
           background: `
             radial-gradient(
@@ -173,7 +175,32 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Botón de menú móvil */}
+          <button 
+            className="md:hidden p-2 -mr-2 text-slate-400 hover:text-indigo-400 focus:outline-none"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Menú"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+
+          {/* Menú de navegación */}
+          <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:flex items-center gap-1 fixed md:static inset-0 bg-slate-900/95 md:bg-transparent z-50 flex flex-col justify-center md:flex-row`}>
+            <button 
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-indigo-400 md:hidden"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Cerrar menú"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {[
               { name: 'Sobre Mí', id: 'about' },
               { name: 'Experiencia', id: 'experiencia' },
@@ -183,7 +210,8 @@ export default function Home() {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors relative group"
+                className="px-6 py-3 md:px-4 md:py-2 text-lg md:text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors relative group w-full md:w-auto text-center md:text-left"
+                onClick={() => setIsMenuOpen(false)}
               >
                 <span className="relative z-10">
                   <span className="text-indigo-400 font-mono mr-1">0{i + 1}.</span>
@@ -196,7 +224,8 @@ export default function Home() {
               href="/CV-DAVID.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 px-4 py-2 text-sm font-medium bg-slate-800/50 hover:bg-slate-700/50 text-indigo-300 rounded-lg border border-slate-700 hover:border-indigo-500/50 transition-all flex items-center"
+              className="md:ml-2 px-6 py-2.5 md:px-4 md:py-2 text-sm font-medium bg-slate-800/50 hover:bg-slate-700/50 text-indigo-300 rounded-lg border border-slate-700 hover:border-indigo-500/50 transition-all flex items-center mt-4 md:mt-0"
+              onClick={() => setIsMenuOpen(false)}
             >
               <span>Mi CV</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -204,6 +233,14 @@ export default function Home() {
               </svg>
             </a>
           </nav>
+          
+          {/* Overlay para cerrar menú */}
+          {isMenuOpen && (
+            <div 
+              className="fixed inset-0 bg-black/70 z-40 md:hidden"
+              onClick={() => setIsMenuOpen(false)}
+            />
+          )}
 
           <motion.div
             className="md:hidden"
@@ -563,14 +600,19 @@ export default function Home() {
                             </div>
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 cursor-pointer"
+                        >
                           <span className="inline-flex items-center text-sm text-indigo-300 font-medium">
                             Ver proyecto
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>
                           </span>
-                        </div>
+                        </a>
                       </div>
 
                       {/* Project Content */}
@@ -600,7 +642,7 @@ export default function Home() {
                         </div>
 
                         <div className="mt-4 pt-4 border-t border-slate-700/50">
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 mb-3">
                             {project.tech.map((tech, i) => (
                               <span
                                 key={i}
@@ -610,6 +652,20 @@ export default function Home() {
                               </span>
                             ))}
                           </div>
+                          {project.github && (
+                            <a 
+                              href={project.github} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center text-xs text-slate-400 hover:text-indigo-400 transition-colors"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                              </svg>
+                              Ver en GitHub
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -627,12 +683,14 @@ export default function Home() {
             >
               <a
                 href="#contacto"
-                className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 group"
+                className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 group relative"
               >
-                ¿Tienes un proyecto en mente? Hablemos
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+                <span className="relative">
+                  ¿Tienes un proyecto en mente? Hablemos
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 inline-block group-hover:translate-x-1 transition-transform -mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </span>
               </a>
             </motion.div>
           </div>
