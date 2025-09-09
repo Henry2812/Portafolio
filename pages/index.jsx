@@ -440,7 +440,7 @@ export default function Home() {
                   <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-lg p-0.5 border border-slate-700/50 group-hover:border-indigo-500/30 transition-colors">
                     <div className="bg-slate-900/80 rounded-md p-6">
                       <img
-                        src="/images/profile/profile.jpg"
+                        src="/images/profile/profile2.jpg"
                         alt="David Arreaga"
                         className="rounded-lg w-full max-w-xs mx-auto object-cover shadow-lg shadow-indigo-500/20"
                         onError={(e) => {
