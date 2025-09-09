@@ -69,7 +69,7 @@ La implementación de dashboards con métricas en tiempo real permitió a la emp
 La aplicación está dirigida a hispanohablantes que desean mejorar su nivel de inglés, ofreciendo lecciones organizadas por niveles de dificultad, desde principiante hasta avanzado.
 
 Con un diseño intuitivo y contenido atractivo, los usuarios pueden aprender vocabulario, gramática y pronunciación de manera efectiva, mientras realizan un seguimiento de su progreso a lo largo del tiempo.`,
-    link: 'https://david-arreaga.vercel.app',
+    link: 'https://davidarreaga.vercel.app',
     tech: ['Flutter', 'Dart', 'Cloud Firestore', 'Firebase Authentication'],
     image: '/images/projects/english/english.png',
     github: 'https://github.com/Henry2812',
