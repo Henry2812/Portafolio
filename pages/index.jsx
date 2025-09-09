@@ -1,32 +1,13 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useCallback, useMemo, useState } from "react";
+import { projectsData } from '../data/projects';
+// Usamos los proyectos del archivo de datos
+const projects = projectsData.map(project => ({
+  ...project,
+  // Mantenemos los enlaces originales para compatibilidad
+  link: `/projects/${project.id}`
+}));
 
-const projects = [
-  {
-    title: 'Aplicación Móvil Iñap',
-    desc: 'Aplicación móvil para el Instituto Nacional Autónomo de Investigaciones Agropecuarias en Quevedo para predicción de crecimiento de maíz forrajero.',
-    link: '#',
-    tech: ['Android Studio', 'Java', 'Flask', 'PythonAnywhere', 'Postman'],
-    image: '/images/projects/iñap/iñap.png',
-    github: 'https://github.com/Henry2812'
-  },
-  {
-    title: 'Sistema Web E-commerce',
-    desc: 'Aplicación web para el comercio electrónico con panel analítico para la toma de decisiones, dashboards con métricas y KPI.',
-    link: 'https://healthinformaticsjournal.com/index.php/IJMI/article/view/1310/1216',
-    tech: ['PHP', 'Loocker Studio', 'phpMyAdmin', 'Bootstrap', 'Paypal', 'Hostinger'],
-    image: '/images/projects/web/webE.jpg',
-    github: 'https://healthinformaticsjournal.com/index.php/IJMI/article/view/1310/1216'
-  },
-  {
-    title: 'Aplicación Movil de Inglés',
-    desc: 'Aplicación con autenticación de usuarios y BD en tiempo real, vocabulario, temas en bloques para aprender inglés por niveles y pruebas acumulativas.',
-    link: 'https://david-arreaga.vercel.app',
-    tech: ['Flutter', 'Dart', 'Cloud Firestore', 'Firebase Authentication'],
-    image: '/images/projects/english/english.png',
-    github: 'https://github.com/Henry2812'
-  }
-];
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
@@ -39,10 +20,10 @@ export default function Home() {
 
   const experiences = [
     {
-      company: 'Iñap',
+      company: 'INIAP',
       role: 'Desarrollador Móvil Full Stack',
       period: '2024 - 2025 - Presente',
-      description: 'Desarrollé y diseñé prototipos hasta llegar a la versión final de una App móvil para el Instituto Nacional de Autónomo de Investigaciones Agropecuarias IÑAP en Quevedo utilizando Android Studio y PythonAnyware.\nContribuí ampliamente con la conversión de modelos.pkl para predicción de crecimiento de maíz forrajero entrenados en Google Colab con Scikit-learn.\nPropuse utilizar e implementé Flask, un microframework de Python, para construir el backend de la aplicación, con la API alojada en PythonAnywhere utilizando su plan gratuito.\nEsta combinación permitió desarrollar un backend funcional y, potencialmente, escalable, especialmente útil para el departamento de I+D de Iñap.\nDesarrollé el Frontend utilizando Android Studio con consumo de la API vía HTTP garantizando la funcionalidad y la experiencia del usuario.\nColaboré con investigadores y otros profesionales del campo para asegurar que la aplicación cumpliera con los requisitos técnicos y funcionales.',
+      description: 'Desarrollé y diseñé prototipos hasta llegar a la versión final de una App móvil para el Instituto Nacional de Autónomo de Investigaciones Agropecuarias INIAP en Quevedo utilizando Android Studio y PythonAnyware.\nContribuí ampliamente con la conversión de modelos.pkl para predicción de crecimiento de maíz forrajero entrenados en Google Colab con Scikit-learn.\nPropuse utilizar e implementé Flask, un microframework de Python, para construir el backend de la aplicación, con la API alojada en PythonAnywhere utilizando su plan gratuito.\nEsta combinación permitió desarrollar un backend funcional y, potencialmente, escalable, especialmente útil para el departamento de I+D de INIAP.\nDesarrollé el Frontend utilizando Android Studio con consumo de la API vía HTTP garantizando la funcionalidad y la experiencia del usuario.\nColaboré con investigadores y otros profesionales del campo para asegurar que la aplicación cumpliera con los requisitos técnicos y funcionales.',
       technologies: ['Python', 'Android SDK (Java)', 'Django & Flask', 'Pandas, NumPy, Scikit-learn', 'Postman', 'PythonAnywhere']
     },
     {
